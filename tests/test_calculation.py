@@ -1,4 +1,5 @@
 import pytest
+from unittest.mock import patch
 from decimal import Decimal
 from datetime import datetime
 from app.calculation import Calculation
@@ -6,10 +7,18 @@ from app.exceptions import OperationError
 import logging
 
 
+
 def test_addition():
     calc = Calculation(operation="Addition", operand1=Decimal("2"), operand2=Decimal("3"))
     assert calc.result == Decimal("5")
 
+def test_calcStringPrint():
+    calc = Calculation(operation="Addition", operand1=Decimal("2"), operand2=Decimal("3"))
+    assert calc.__str__() == "Addition(2, 3) = 5"
+
+def test_calcRepStringPrint():
+    calc = Calculation(operation="Addition", operand1=Decimal("2"), operand2=Decimal("3"))
+    assert "Calculation(operation='Addition', operand1=2, operand2=3, result=5, timestamp='" in calc.__repr__()
 
 def test_subtraction():
     calc = Calculation(operation="Subtraction", operand1=Decimal("5"), operand2=Decimal("3"))

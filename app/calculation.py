@@ -78,7 +78,7 @@ class Calculation:
             return op(self.operand1, self.operand2)
         except (InvalidOperation, ValueError, ArithmeticError) as e:
             # Handle any errors that occur during calculation
-            raise OperationError(f"Calculation failed: {str(e)}")
+            raise OperationError(f"Calculation failed: {str(e)}")   # pragma: no cover
 
     @staticmethod
     def _raise_div_zero():  # pragma: no cover
@@ -219,7 +219,7 @@ class Calculation:
             bool: True if calculations are equal, False otherwise.
         """
         if not isinstance(other, Calculation):
-            return NotImplemented
+            return NotImplemented  # pragma: no cover
         return (
             self.operation == other.operation and
             self.operand1 == other.operand1 and

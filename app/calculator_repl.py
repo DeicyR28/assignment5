@@ -81,6 +81,7 @@ def calculator_repl():
                         print("Nothing to undo")
                     continue
 
+
                 if command == 'redo':
                     # Redo the last undone calculation
                     if calc.redo():
